@@ -12,7 +12,7 @@ function getData(time, language) {
             let list_array = [];
             $('.Box .Box-row').each(function () { // 像jQuery一样获取对应节点值
                 let obj = {};
-                obj.title = $(this).find('h1').text().trimStart().trimEnd(); // 获取标题
+                obj.title = $(this).find('h1').text().trimStart().trimEnd().replace(/[\r\n]/g, "").replace("      ", " "); // 获取标题
                 obj.links = 'https://github.com/' + obj.title.replace(/\s/g, "");   // 拼接链接
                 obj.description = $(this).find('p').text().trimStart().trimEnd();  // 获取获取描述
                 obj.language = $(this).find('>.f6 .repo-language-color').siblings().text().trimStart().trimEnd();  // 获取语言
