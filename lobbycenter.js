@@ -9,6 +9,57 @@ const companyID = 'SDDC0341'
 const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
 const outputDIR = '.'
 
+function outputResource(list_array, html_string, resource, url, status) {
+    let obj = {};
+    obj.type = resource;
+    obj.url = url;
+    obj.status = status;
+    obj.output = resource + '.html';
+
+    list_array.push(obj);
+
+    fs.writeFile(outputDIR + '/' + resource + '.html', html_string, (err) => {
+        if (err) throw err;
+        console.log(resource + ' saved!');
+    });
+
+    return list_array;
+}
+
+function formatText(s) {
+    if (s == undefined) return '';
+    return s.replace('&nbsp;', ' ').trimStart().trimEnd();
+}
+
+function parseResource(list_array, html_string, resource) {
+    const $ = cheerio.load(html_string);
+
+    switch(resource) {
+        case 'Services':
+            $('tr', '#ContentPlaceHolder1_Content_lstServices').each(function () {
+                let tds = $(this).find('td');
+                if (tds.length === 7) {
+                    let obj = {};
+                    obj.name = formatText($(tds[0]).text());
+                    obj.kioskName = formatText($(tds[1]).text());
+                    obj.isKioskDefault = formatText($(tds[2]).text());
+                    obj.category = formatText($(tds[3]).text());
+                    obj.status = formatText($(tds[4]).text());
+                    list_array.push(obj);
+                }
+            });
+            break;
+        case 'Users':
+        case 'Locations':
+        case 'Queues':
+        default:
+            break;
+    }
+
+
+    return list_array;
+}
+
 function getResources(resource) {
     let url = hostname + '/admin/' + resource + '.aspx';
     return axios({
@@ -28,20 +79,11 @@ function getResources(resource) {
             'Content-Type' : 'application/x-www-form-urlencoded',
         },
     }).then(function (response) {
-        let list_array = [];
-
-        let obj = {};
-        obj.type = resource;
-        obj.url = url;
-        obj.status = response.status;
-        obj.output = resource + '.html';
-        list_array.push(obj);
-
         let html_string = response.data.toString();
-        fs.writeFile(outputDIR + '/' + resource + '.html', html_string, (err) => {
-            if (err) throw err;
-            console.log(resource + ' saved!');
-        });
+
+        let list_array = [];
+        // outputResource(list_array, html_string, resource, url, response.status);
+        parseResource(list_array, html_string, resource);
 
         return Promise.resolve(list_array);
     })
