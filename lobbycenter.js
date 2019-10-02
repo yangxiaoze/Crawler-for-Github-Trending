@@ -88,6 +88,7 @@ function getResources(resource) {
         // outputResource(list_array, html_string, resource, url, response.status);
         parseResource(list_array, html_string, resource);
 
+        console.log(resource + " Page(1), " + list_array.length + "records retrieved.");
         return Promise.resolve(list_array);
     })
 }
@@ -118,7 +119,11 @@ function queryResourcesByPage(resource, pageNumber) {
         // outputResource(list_array, html_string, resource, url, response.status);
         parseResource(list_array, html_string, resource);
 
+        console.log(resource + " Page(" + pageNumber + "), " + list_array.length + " records retrieved.");
         return Promise.resolve(list_array);
+    })
+    .catch(function (error) {
+        // ignored
     })
 }
 
