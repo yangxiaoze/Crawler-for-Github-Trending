@@ -1,0 +1,190 @@
+<div class="picsie-queue-container container-fluid" style="font-size: 90%">
+  <h2 class="heading">
+    <center>Today&apos;s Hearings</center>
+  </h2>
+  <div class="row">
+    <div class="col-xs-3">
+      <a class="btn btn-primary" href="/pepe">&lt; Back</a>
+    </div>
+    <center class="col" style="float: none; margin: 0 auto">
+      <div class="card card-body" style="color: black">
+        <form name="filter" action="/pepe/hearings" method="GET">
+          <label><strong>Session</strong> </label> {{{radioBoxes}}}
+          <label><strong>Department</strong> </label> {{{checkBoxes}}}
+          <button class="btn btn-primary" type="submit">Go</button>
+        </form>
+      </div>
+    </center>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Court Info</th>
+            <th>CP</th>
+            <th class="print-hidden">CP Status</th>
+            <th>NCP</th>
+            <th class="print-hidden">NCP Status</th>
+            <th class="print-hidden">Status</th>
+            <th class="print-hidden">Window Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each listOfHearings}}
+          <tr class="{{#if this.anyEdgeCases}} table-warning {{/if}} {{#if this.anyFaceCases}} table-info {{/if}}">
+            <td>
+              <dl class="inline-flex">
+                <dt>session:</dt>
+                <dd><strong>{{ this.calendarTimeSlot}}</strong></dd>
+                <dt>fips:</dt>
+                <dd>{{ this.fipsCode }}</dd>
+                <dt>record id</dt>
+                <dd>{{ this.recordId }}</dd>
+                <dt>court #:</dt>
+                <dd>{{ this.courtOrderNumber }}</dd>
+                <dt>dept:</dt>
+                <dd>{{ this.department }}</dd>
+                <dt>date:</dt>
+                <dd>{{ this.readableStartTime}} </dd>
+              </dl>
+            </td>
+            <td>
+              <dl class="inline-flex">
+                <dt>First</dt>
+                <dd>{{ this.custodialParent.givenName }}</dd>
+                <dt>Last</dt>
+                <dd>{{ this.custodialParent.surName }}</dd>
+                <dt>Bday</dt>
+                <dd>{{ this.custodialParent.readableBirthDay }}</dd>
+                <dt>License</dt>
+                <dd>{{ this.custodialParent.license }}</dd>
+                <dt>SSN</dt>
+                <dd>{{ this.custodialParent.lastFourSSN }}</dd>
+                <dt>CSE</dt>
+                <dd>{{ this.custodialParent.recordId }}</dd>
+              </dl>
+            </td>
+            <td class="print-hidden">
+              <dl class="inline-flex">
+                <dt>Role:</dt>
+                <dd>{{ this.cpRole }}</dd>
+                <dt>Checked in:</dt>
+                {{#if this.cpFlag }}
+                <dd>{{ this.readableCPCheckInTime }}</dd>
+                {{else}}
+                <dd>
+                  <form action="/pepe/checkIn" method="post">
+                    <input hidden name="filterUrl" value={{ ../filterUrl }}>
+                    <input hidden name="recordId" value={{ this.recordId }}>
+                    <input hidden name="cpFlag" value="true">
+                    <button class="btn btn-sm btn-outline-secondary" type="submit">Check-In CP</button>
+                  </form>
+                </dd>
+                {{/if}}
+                <dt>Atty Checked in:</dt>
+                {{#if this.cpRepresentationFlag }}
+                <dd>{{ this.readableCPRepCheckInTime }}</dd>
+                {{else}}
+                <dd>
+                  <form action="/pepe/checkIn" method="post">
+                    <input hidden name="filterUrl" value={{ ../filterUrl }}>
+                    <input hidden name="recordId" value={{ this.recordId }}>
+                    <input hidden name="cpRepresentationFlag" value="true">
+                    <button class="btn btn-sm btn-outline-secondary" type="submit">Check-In CP Atty</button>
+                  </form>
+                </dd>
+                {{/if}}
+              </dl>
+            </td>
+            <td>
+              <dl class="inline-flex">
+                <dt>First</dt>
+                <dd>{{ this.nonCustodialParent.givenName }}</dd>
+                <dt>Last</dt>
+                <dd>{{ this.nonCustodialParent.surName }}</dd>
+                <dt>Bday</dt>
+                <dd>{{ this.nonCustodialParent.readableBirthDay }}</dd>
+                <dt>License</dt>
+                <dd>{{ this.nonCustodialParent.license }}</dd>
+                <dt>SSN</dt>
+                <dd>{{ this.nonCustodialParent.lastFourSSN }}</dd>
+                <dt>CSE</dt>
+                <dd>{{ this.nonCustodialParent.recordId }}</dd>
+              </dl>
+            </td>
+            <td class="print-hidden">
+              <dl class="inline-flex">
+                <dt>Role:</dt>
+                <dd>{{ this.ncpRole }}</dd>
+                <dt>Checked in:</dt>
+                {{#if this.ncpFlag }}
+                <dd>{{ this.readableNCPCheckInTime }}</dd>
+                {{else}}
+                <dd>
+                  <form action="/pepe/checkIn" method="post">
+                    <input hidden name="filterUrl" value={{ ../filterUrl }}>
+                    <input hidden name="recordId" value={{ this.recordId }}>
+                    <input hidden name="ncpFlag" value="true">
+                    <button class="btn btn-sm btn-outline-secondary" type="submit">Check-In NCP</button>
+                  </form>
+                </dd>
+                {{/if}}
+                <dt>Atty Checked in:</dt>
+                {{#if this.ncpRepresentationFlag }}
+                <dd>{{ this.readableNCPRepCheckInTime }}</dd>
+
+                {{else}}
+                <dd>
+                  <form action="/pepe/checkIn" method="post">
+                    <input hidden name="filterUrl" value={{ ../filterUrl }}>
+                    <input hidden name="recordId" value={{ this.recordId }}>
+                    <input hidden name="ncpRepresentationFlag" value="true">
+                    <button class="btn btn-sm btn-outline-secondary" type="submit">Check-In NCP Atty</button>
+                  </form>
+                </dd>
+                {{/if}}
+              </dl>
+            </td>
+            <td class="print-hidden" style="min-width: 300px;">
+              <form action="/pepe/updateHearingStatus" method="post">
+                <input hidden name="filterUrl" value={{ ../filterUrl }}>
+                <input hidden name="recordId" value={{ this.recordId }}>
+                <div class="input-group">
+                  <select name="status" class="custom-select">
+                    <option value="{{this.status}}" hidden="hidden" selected="selected">{{this.status}}</option>
+                    <option selectedvalue="SCHEDULED">SCHEDULED</option>
+                    <option value="CASE_READY">CASE_READY</option>
+                    <option value="WINDOW_ASSIGNED">WINDOW_ASSIGNED</option>
+                    <option name="status" value="COMPLETE">COMPLETE</option>
+                  </select>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Change</button>
+                  </div>
+                </div>
+              </form>
+            </td>
+            <td class="print-hidden" style="min-width: 300px;">
+              {{#if this.windowNumber }}
+              {{ this.windowNumber }}
+              {{else}}
+              <form action="/pepe/assignWindowNumber" method="post">
+                <input hidden name="filterUrl" value={{ ../filterUrl }}>
+                <input hidden name="recordId" value={{ this.recordId }}>
+                <div class="form-group input-group">
+                  <input type="number" min=1 max=30 required name="windowNumber" class="form-control"
+                    placeholder="Window Number">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Add</button>
+                  </div>
+                </div>
+              </form>
+              {{/if}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

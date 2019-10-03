@@ -1,0 +1,49 @@
+<div class="container-fluid" style="font-size: 90%">
+  <h2 class="heading">
+    <center>Services of LobbyCentral</center>
+  </h2>
+  <div class="row">
+    <div class="col-xs-3">
+      <a class="btn btn-primary" href="/lobbycentral">&lt; Back</a>
+    </div>
+    <div class="col-xs-9">
+      <p> Total: {{ listOfServices.length }} </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Service Name</th>
+            <th>Kiosk Name</th>
+            <th>Is Kiosk Default</th>
+            <th>Category</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each listOfServices}}
+          <tr class="">
+            <td><strong>
+              {{ this.serviceName}}
+            </strong></td>
+            <td>
+              {{ this.kioskName}}
+            </td>
+            <td>
+              {{ this.isKioskDefault}}
+            </td>
+            <td>
+              {{ this.category}}
+            </td>
+            <td>
+              {{ this.status}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

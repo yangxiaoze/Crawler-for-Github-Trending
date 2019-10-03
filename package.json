@@ -1,16 +1,28 @@
 {
-  "name": "githubapi",
+  "name": "myCrawler",
   "version": "1.0.0",
-  "description": "API for Github Trending",
-  "main": "index.js",
+  "description": "Web crawler for Github Trending, LobbyCenter",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "zy_2071",
+  "author": "yangxiaoze",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "body-parser": "^1.18.3",
+    "dateformat": "^3.0.3",
+    "express-handlebars": "^3.0.2",
+    "faker": "github:Marak/faker.js#master",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "mustache": "^3.0.1",
+    "mustache-express": "^1.2.8",
+    "node-sass": "^4.12.0",
+    "require-directory": "^2.1.1",
+    "sequelize": "^5.8.6",
+    "sqlite3": "^4.0.6"
   }
 }

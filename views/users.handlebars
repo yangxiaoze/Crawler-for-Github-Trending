@@ -1,0 +1,46 @@
+<div class="container-fluid col-xs-12" style="font-size: 90%">
+  <h2 class="heading">
+    <center>Users of LobbyCentral</center>
+  </h2>
+  <div class="row">
+    <div class="col-xs-3">
+      <a class="btn btn-primary" href="/lobbycentral">&lt; Back</a>
+    </div>
+    <div class="col-xs-9">
+      <p> Total: {{ listOfUsers.length }} </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each listOfUsers}}
+          <tr class="">
+            <td><strong>
+              {{ this.userName}}
+            </strong></td>
+            <td>
+              {{ this.fullName}}
+            </td>
+            <td>
+              {{ this.email}}
+            </td>
+            <td>
+              {{ this.status}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
