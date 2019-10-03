@@ -6,7 +6,8 @@ const app = express()
 
 const hostname = 'https://login.lobbycentral.com'
 const companyID = 'SDDC0341'
-const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
+const sessionID = 'neycaa1ztbt0oztjlkzjzgva'
+const lastProfileCheck = '10/2/2019'
 const outputDIR = '.'
 var tableId = 'ContentPlaceHolder1_Content_lstServices';
 var columns = 7
@@ -69,7 +70,7 @@ function getResources(resource) {
         method: 'get',
         url: url,
         headers: {
-            'Cookie' : 'LobbyCentralOnline=companyID=' + companyID + '&lastProfileCheck=9/30/2019; ASP.NET_SessionId=' + sessionID,
+            'Cookie': 'LobbyCentralOnline=companyID=' + companyID + '&lastProfileCheck=' + lastProfileCheck + '; ASP.NET_SessionId=' + sessionID,
             'Accept' : 'ext/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
             'Accept-Encoding' : 'gzip, deflate, br',
             'Host' : 'login.lobbycentral.com',
