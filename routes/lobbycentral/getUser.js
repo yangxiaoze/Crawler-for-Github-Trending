@@ -18,6 +18,8 @@ var tableId = 'ContentPlaceHolder1_Content_lstUsers';
 var columns = 7    // data(4)+action(3)
 var pageSize = 15;
 var navigateSize = 10;
+var activePages = 22;
+var allPages = 30;
 
 function formatText(s) {
   if (s == undefined) return '';
@@ -172,7 +174,7 @@ module.exports = async (request, response) => {
     let promises = [];
     let delayInMilliseconds = 2000;
     promises.push(getResources(resource));
-    for (let i = 1; i < 22; i++) {
+    for (let i = 1; i < activePages; i++) {
       await wait(delayInMilliseconds);
       promises.push(queryResourcesByPage(resource, (i + 1)));
     }
@@ -188,10 +190,12 @@ module.exports = async (request, response) => {
 
       if (raw) {
         response.status(200).send({
+          'Status' : 'Active',
           listOfUsers
         });
       } else {
         response.render(route, {
+          'Status' : 'Active',
           listOfUsers
         });
       }
