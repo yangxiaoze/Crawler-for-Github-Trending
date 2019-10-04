@@ -8,7 +8,7 @@
 
   <h2 class="heading">
     <center>
-      Locations of LobbyCentral, Total {{listOfLocations.length}}. 
+      Rerport Customer. 
     </center>
   </h2>
  
@@ -17,21 +17,23 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Location</th>
-            <th>Status</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Check In</th>
           </tr>
         </thead>
         <tbody>
-          {{#each listOfLocations}}
           <tr class="">
             <td><strong>
-              {{ this.locationName}}
+              First Name
             </strong></td>
             <td>
-              {{ this.status}}
+              Last Name
+            </td>
+            <td>
+              Check In date and time
             </td>
           </tr>
-          {{/each}}
         </tbody>
       </table>
     </div>

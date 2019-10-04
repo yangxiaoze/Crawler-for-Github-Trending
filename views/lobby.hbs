@@ -1,1 +1,70 @@
-{{> resources }}
+<div class="container-fluid col-xs-12" style="font-size: 90%">
+
+  <div class="row">
+    {{> menu }}
+  </div>
+  
+  <div class="row">  </div>
+  <h2 class="heading">
+    <center>
+      Checked-In Cases, Total {{listOfCaseCheckedIn.length}}. 
+    </center>
+  </h2>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each listOfCaseCheckedIn}}
+          <tr class="">
+            <td><strong>
+              {{ this.locationName}}
+            </strong></td>
+            <td>
+              {{ this.status}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+  <div class="row">  </div>
+  <h2 class="heading">
+    <center>
+      In-Service Cases, Total {{listOfCaseInService.length}}. 
+    </center>
+  </h2>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each listOfCaseInService}}
+          <tr class="">
+            <td><strong>
+              {{ this.locationName}}
+            </strong></td>
+            <td>
+              {{ this.status}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

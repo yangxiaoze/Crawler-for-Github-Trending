@@ -51,6 +51,6 @@ module.exports = async (request, response) => {
     
     let promise = login(request.query.username, request.query.password);
     promise.then( (obj) => {
-        response.render('lobby', obj);
+        response.render('menu', obj);
     })
 };
