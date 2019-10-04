@@ -1,18 +1,14 @@
-const { pickBy } = require('lodash');
-const moment = require('moment');
-const { Op } = require('sequelize');
 const Service = require('../../models/service');
-const exists = require('../../util/exists');
 const cheerio = require('cheerio')
 const fs = require('fs');
 const axios = require('axios');
 
 const hostname = 'https://login.lobbycentral.com'
 const companyID = 'SDDC0341'
-// const sessionID = 'neycaa1ztbt0oztjlkzjzgva'
-// const lastProfileCheck = '10/2/2019'
-const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
-const lastProfileCheck = '9/30/2019'
+const sessionID = 'neycaa1ztbt0oztjlkzjzgva'
+const lastProfileCheck = '10/2/2019'
+// const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
+// const lastProfileCheck = '9/30/2019'
 const outputDIR = '.'
 var tableId = 'ContentPlaceHolder1_Content_lstServices';
 var columns = 7
@@ -197,10 +193,14 @@ module.exports = async (request, response) => {
 
       if (raw) {
         response.status(200).send({
+          pageSize: pageSize,
+          pages: arrays.length,
           listOfServices
         });
       } else {
         response.render(route, {
+          pageSize: pageSize,
+          pages: arrays.length,
           listOfServices
         });
       }

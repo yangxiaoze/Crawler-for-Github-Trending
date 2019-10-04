@@ -1,18 +1,19 @@
 <div class="container-fluid col-xs-12" style="font-size: 90%">
-  <h2 class="heading">
-    <center>Users of LobbyCentral</center>
-  </h2>
-  <div class="row">
-    <div class="col-xs-3">
-      <a class="btn btn-primary" href="/lobbycentral">&lt; Back</a>
-    </div>
-    <div class="col-xs-9">
-      <p> {{ listOfUsers.length }}: {{ listOfUsers.length }} </p>
-    </div>
-  </div>
 
   <div class="row">
-    <div class="col-xs-12">
+    {{> resources }}
+  </div>
+  
+  <div class="row">  </div>
+
+  <h2 class="heading">
+    <center>
+      Users of LobbyCentral, Total {{listOfUsers.length}} in {{ pages }} pages. 
+    </center>
+  </h2>
+ 
+  <div class="row">
+    <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>

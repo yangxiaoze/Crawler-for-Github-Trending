@@ -1,17 +1,20 @@
 <div class="container-fluid" style="font-size: 90%">
-  <h2 class="heading">
-    <center>Services of LobbyCentral</center>
-  </h2>
+  
   <div class="row">
-    <div class="col-xs-3">
-      <a class="btn btn-primary" href="/lobbycentral">&lt; Back</a>
-    </div>
-    <div class="col-xs-9">
-      <p> Total: {{ listOfServices.length }} </p>
-    </div>
+    {{> resources }}
   </div>
+  
+  <div class="row"> </div>
+
+  <h2 class="heading">
+    <center>
+      Services of LobbyCentral, total {{ listOfServices.length }} records in {{ pages }} pages. 
+
+    </center>
+  </h2>
+
   <div class="row">
-    <div class="col-xs-12">
+    <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>

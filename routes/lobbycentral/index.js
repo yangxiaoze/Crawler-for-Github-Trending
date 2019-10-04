@@ -1,5 +1,5 @@
 const express = require('express');
-const home = require('./lobbycentral');
+const home = require('./lobby');
 
 const getService = require('./getService');
 const getUser = require('./getUser');

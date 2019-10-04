@@ -1,4 +1,4 @@
-const expresshbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
@@ -10,12 +10,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(errorHandler);
 
-app.engine('handlebars', expresshbs({
-                            defaultView: 'home',
-                            defaultLayout: 'main',
-                         }),
+app.engine(
+   '.hbs', 
+   exphbs({
+      extname: '.hbs',
+      defaultView: 'home',
+      defaultLayout: 'main',
+   }),
 );
-app.set('view engine', 'handlebars');
+app.set('view engine', '.hbs');
 
 app.use('/', routes);
 
