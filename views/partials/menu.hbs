@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="d-flex justify-content-center">
 
+    <!--
     <div class="card w-25">
       <div class="card-body">
         <h5 class="card-title">Case Manager</h5>
@@ -18,6 +19,36 @@
         <a href="/lobbycentral/report" class="btn btn-primary" id="report"> Report </a>
       </div>
     </div>
+    -->
+    <div class="card w-100">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="header-case-management">Case Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" id="header-admin">Admin</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body w-100" id="tab-admin">
+        <a href="/lobbycentral/services" class="btn btn-primary" id="services"> Service </a>
+        <a href="/lobbycentral/users?page=1" class="btn btn-primary" id="users"> Users </a>
+        <a href="/lobbycentral/locations" class="btn btn-primary" id="locations"> Location </a>
+        <a href="/lobbycentral/queues" class="btn btn-primary" id="queues"> Queue </a>
+        <a href="/lobbycentral/report" class="btn btn-primary" id="report"> Report </a>
+      </div>
+      <!--
+      <div class="card-body w-100"  id="tab-case-management">
+        <a href="/lobbycentral/lobby" class="btn btn-primary" id="lobby"> LOBBY </a>
+      </div>
+      -->
+
+      <script lang="javascript">
+        // TODO: toggle tab upon click
+      </script>
+    </div>
 
   </div>
 </div>
+
