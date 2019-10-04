@@ -4,12 +4,10 @@ const axios = require('axios');
 
 const hostname = 'https://login.lobbycentral.com'
 const companyID = 'SDDC0341'
-const sessionID = 'neycaa1ztbt0oztjlkzjzgva'
-const lastProfileCheck = '10/2/2019'
-// const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
-// const lastProfileCheck = '9/30/2019'
-let username = 'ayang'
-let password = 'password'
+// const sessionID = 'neycaa1ztbt0oztjlkzjzgva'
+// const lastProfileCheck = '10/2/2019'
+const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
+const lastProfileCheck = '9/30/2019'
 
 function parseLogin(list_array, html_string) {
     const $ = cheerio.load(html_string);
@@ -22,7 +20,7 @@ function parseLogin(list_array, html_string) {
     return obj;
 }
 
-function login() {
+function login(username, password) {
     let url = hostname + '/Login.aspx';
     return axios({
             method: 'post',
@@ -50,7 +48,8 @@ function login() {
 }
 
 module.exports = async (request, response) => {
-    let promise = login();
+    
+    let promise = login(request.query.username, request.query.password);
     promise.then( (obj) => {
         response.render('lobby', obj);
     })

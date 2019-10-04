@@ -14,13 +14,14 @@ app.engine(
    '.hbs', 
    exphbs({
       extname: '.hbs',
-      defaultView: 'home',
+      defaultView: 'root',
       defaultLayout: 'main',
    }),
 );
 app.set('view engine', '.hbs');
 
 app.use('/', routes);
+app.use(express.static('static'));
 
 // Server Main
 // Parse URL-encoded bodies (as sent by HTML forms)

@@ -5,10 +5,10 @@ const axios = require('axios');
 
 const hostname = 'https://login.lobbycentral.com'
 const companyID = 'SDDC0341'
-const sessionID = 'neycaa1ztbt0oztjlkzjzgva'
-const lastProfileCheck = '10/2/2019'
-// const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
-// const lastProfileCheck = '9/30/2019'
+// const sessionID = 'neycaa1ztbt0oztjlkzjzgva'
+// const lastProfileCheck = '10/2/2019'
+const sessionID = '4xqyjzo3gmst5q3ryiozuqel'
+const lastProfileCheck = '9/30/2019'
 const outputDIR = '.'
 var tableId = 'ContentPlaceHolder1_Content_lstServices';
 var columns = 7

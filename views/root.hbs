@@ -1,11 +1,33 @@
-<div class="container">
+<div class="container-fluid h-100">
 
-  <h2>Welcome to My Crawler</h2>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
 
-  <p></p>
-  
-  <p>To see Github trends, <a href="/github">Github</a></p>
+      <!-- Icon -->
+      <div class="fadeIn first" style="margin-top: 1em; margin-bottom: 1em">
+        <img src="images/lobbycentral.png" id="icon"/>
+      </div>
 
-  <p>To retrieve LobbyCentral resources, <a href="/lobbycentral">LobbyCentral</a></p>
+      <!-- Login Form -->
+      <form action="/lobbycentral/login">
+        
+        <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+
+        <div style="height: 2em"></div>
+
+        <input type="submit" class="fadeIn fourth" value="Log In">
+
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        Please login to access LobbyCentral
+      </div>
+
+    </div>
+  </div>
 
 </div>
