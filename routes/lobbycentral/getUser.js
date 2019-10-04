@@ -155,10 +155,16 @@ module.exports = async (request, response) => {
     promise.then(listOfUsers => {
       if (raw) {
         response.status(200).send({
+          'Status' : 'Active',
+          pageSize: pageSize,
+          pages: 1,
           listOfUsers
         });
       } else {
         response.render(route, {
+          'Status' : 'Active',
+          pageSize: pageSize,
+          pages: 1,
           listOfUsers
         });
       }
@@ -169,7 +175,7 @@ module.exports = async (request, response) => {
     // fetch all
     let wait = (ms) => new Promise((r, j) => setTimeout(r, ms))
     let promises = [];
-    let delayInMilliseconds = 2000;
+    let delayInMilliseconds = 1100;
     promises.push(getResources(resource));
     for (let i = 1; i < activePages; i++) {
       await wait(delayInMilliseconds);
@@ -188,11 +194,15 @@ module.exports = async (request, response) => {
       if (raw) {
         response.status(200).send({
           'Status' : 'Active',
+          pageSize: pageSize,
+          pages: arrays.length,
           listOfUsers
         });
       } else {
         response.render(route, {
           'Status' : 'Active',
+          pageSize: pageSize,
+          pages: arrays.length,
           listOfUsers
         });
       }

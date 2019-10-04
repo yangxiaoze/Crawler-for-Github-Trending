@@ -158,10 +158,14 @@ module.exports = async (request, response) => {
     promise.then(listOfServices => {
       if (raw) {
         response.status(200).send({
+          pageSize: pageSize,
+          pages: 1,
           listOfServices
         });
       } else {
         response.render(route, {
+          pageSize: pageSize,
+          pages: 1,
           listOfServices
         });
       }

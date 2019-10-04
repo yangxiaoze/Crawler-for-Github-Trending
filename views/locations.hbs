@@ -8,8 +8,7 @@
 
   <h2 class="heading">
     <center>
-      Users of LobbyCentral, Total {{listOfUsers.length}} in {{ pages }} pages. 
-      Clike to <a href='/lobbycentral/users'>retrieve all users</a>, it will take about 30 seconds.
+      Locations of LobbyCentral, Total {{listOfLocations.length}}. 
     </center>
   </h2>
  
@@ -18,24 +17,16 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>User Name</th>
-            <th>Email</th>
+            <th>Location</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          {{#each listOfUsers}}
+          {{#each listOfLocations}}
           <tr class="">
             <td><strong>
-              {{ this.userName}}
+              {{ this.locationName}}
             </strong></td>
-            <td>
-              {{ this.fullName}}
-            </td>
-            <td>
-              {{ this.email}}
-            </td>
             <td>
               {{ this.status}}
             </td>
