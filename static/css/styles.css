@@ -26,7 +26,7 @@
   }
 
   /* STRUCTURE */
-  .wrapper {
+  .dialog-wrapper {
     display: flex;
     align-items: center;
     flex-direction: column; 
