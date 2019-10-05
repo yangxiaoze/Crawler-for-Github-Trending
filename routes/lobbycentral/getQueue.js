@@ -103,7 +103,7 @@ function getResource(resource) {
 
 module.exports = async (request, response) => {
   let resource = 'Queues';
-  let route = 'queues';
+  let route = 'lobbycentral/queues';
 
   let raw = false;
   if (request.query.raw) {

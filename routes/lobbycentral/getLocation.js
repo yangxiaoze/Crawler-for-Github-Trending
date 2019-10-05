@@ -91,7 +91,7 @@ function getResource(resource) {
 
 module.exports = async (request, response) => {
   let resource = 'Locations';
-  let route = 'locations';
+  let route = 'lobbycentral/locations';
 
   let raw = false;
   if (request.query.raw) {

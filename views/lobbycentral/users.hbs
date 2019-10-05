@@ -1,41 +1,40 @@
-<div class="container-fluid" style="font-size: 90%">
-  
+<div class="container-fluid col-xs-12" style="font-size: 90%">
+
   <div class="row">
-    {{> menu }}
+    {{> lobbycentral/menu }}
   </div>
   
-  <div class="row"> </div>
+  <div class="row">  </div>
 
   <h2 class="heading">
-      Services of LobbyCentral, total {{ listOfServices.length }} records in {{ pages }} pages. 
+    <center>
+      Users of LobbyCentral, Total {{listOfUsers.length}} in {{ pages }} pages. 
+      Clike to <a href='/lobbycentral/users'>retrieve all users</a>, it will take about 30 seconds.
+    </center>
   </h2>
-
+ 
   <div class="row">
     <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
-            <th>Service Name</th>
-            <th>Kiosk Name</th>
-            <th>Is Kiosk Default</th>
-            <th>Category</th>
+            <th>Name</th>
+            <th>User Name</th>
+            <th>Email</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          {{#each listOfServices}}
+          {{#each listOfUsers}}
           <tr class="">
             <td><strong>
-              {{ this.serviceName}}
+              {{ this.userName}}
             </strong></td>
             <td>
-              {{ this.kioskName}}
+              {{ this.fullName}}
             </td>
             <td>
-              {{ this.isKioskDefault}}
-            </td>
-            <td>
-              {{ this.category}}
+              {{ this.email}}
             </td>
             <td>
               {{ this.status}}

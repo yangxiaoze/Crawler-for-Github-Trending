@@ -131,7 +131,7 @@ function queryServicesByPage(resource, pageNumber) {
 
 module.exports = async (request, response) => {
   let resource = 'Services';
-  let route = 'services';
+  let route = 'lobbycentral/services';
 
   // listOfServices.push({
   //   serviceName: 'Case Closure',

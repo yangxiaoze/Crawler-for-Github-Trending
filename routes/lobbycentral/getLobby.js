@@ -77,7 +77,7 @@ function queryLobby() {
 }
 
 module.exports = async (request, response) => {
-  let route = 'lobby';
+  let route = 'lobbycentral/lobby';
 
   let raw = false;
   if (request.query.raw) {

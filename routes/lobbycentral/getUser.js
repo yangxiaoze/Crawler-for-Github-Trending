@@ -138,7 +138,7 @@ function queryResourcesByPage(resource, pageNumber) {
 
 module.exports = async (request, response) => {
   let resource = 'Users';
-  let route = 'users';
+  let route = 'lobbycentral/users';
 
   let raw = false;
   if (request.query.raw) {
